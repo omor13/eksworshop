@@ -4,8 +4,8 @@ https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 https://eksctl.io/installation/
 https://kubernetes.io/docs/tasks/tools/
 
-aws configure
-aws sts get-caller-identity
+- aws configure
+- aws sts get-caller-identity
 
 ###
 
