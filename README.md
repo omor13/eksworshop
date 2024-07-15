@@ -1,4 +1,4 @@
-Step [1]: Install aws cli,eksctl,kubectl
+Step [1]: Install aws cli,eksctl,kubectl & aws configure
 
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 https://eksctl.io/installation/
