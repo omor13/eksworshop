@@ -1,0 +1,38 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+availabilityZones:
+  - us-west-2a
+  - us-west-2b
+  - us-west-2c
+metadata:
+  name: fadi-eks-cluster
+  region: us-west-2
+  version: "1.29"
+  tags:
+    karpenter.sh/discovery: fadi-eks-cluster
+    created-by: eks-workshop-v2
+    env: fadi-eks-cluster
+iam:
+  withOIDC: true
+vpc:
+  cidr: 10.42.0.0/16
+  clusterEndpoints:
+    privateAccess: true
+    publicAccess: true
+addons:
+  - name: vpc-cni
+    version: 1.16.0
+    configurationValues: '{"env":{"ENABLE_PREFIX_DELEGATION":"true", "ENABLE_POD_ENI":"true", "POD_SECURITY_GROUP_ENFORCING_MODE":"standard"},"enableNetworkPolicy": "true"}'
+    resolveConflicts: overwrite
+managedNodeGroups:
+  - name: default
+    desiredCapacity: 3
+    minSize: 3
+    maxSize: 6
+    instanceType: t3.small
+    privateNetworking: true
+    releaseVersion: "1.29.0-20240129"
+    updateConfig:
+      maxUnavailablePercentage: 50
+    labels:
+      workshop-default: "yes"
