@@ -9,9 +9,7 @@ https://kubernetes.io/docs/tasks/tools/
 
 ###
 
-Step [2]: Create ClusterConfig yaml file & Create the Cluster
-
-Copy from: https://raw.githubusercontent.com/aws-samples/eks-workshop-v2/stable/cluster/eksctl/cluster.yaml
+Step [2]: Create the Cluster using yaml file
 
 - eksctl create cluster -f cluster.yaml
 
@@ -20,5 +18,11 @@ Copy from: https://raw.githubusercontent.com/aws-samples/eks-workshop-v2/stable/
 Step [3]: Connect kubectl to an EKS cluster by creating a kubeconfig file
 
 - aws eks update-kubeconfig --region <region> --name <cluster-name>
+
+###
+
+Step [4]: deploy all components using kubectl apply
+
+- kubectl apply - f deploy.yaml
 
 
