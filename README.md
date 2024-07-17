@@ -1,8 +1,8 @@
 Step [1]: Install aws cli,eksctl,kubectl & aws configure
 
-https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-https://eksctl.io/installation/
-https://kubernetes.io/docs/tasks/tools/
+1. https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+2. https://eksctl.io/installation/
+3. https://kubernetes.io/docs/tasks/tools/
 
 - aws configure
 - aws sts get-caller-identity
