@@ -5,13 +5,13 @@ availabilityZones:
   - eu-central-1b
   - eu-central-1c
 metadata:
-  name: eks-fadi-1707
+  name: eks-fadi-1707-addons
   region: eu-central-1
   version: "1.29"
   tags:
-    karpenter.sh/discovery: eks-fadi-1707
+    karpenter.sh/discovery: eks-fadi-1707-addons
     created-by: eks-workshop-v2
-    env: eks-fadi-1707
+    env: eks-fadi-1707-addons
 iam:
   withOIDC: true
 vpc:
@@ -24,6 +24,13 @@ addons:
     version: 1.16.0
     configurationValues: '{"env":{"ENABLE_PREFIX_DELEGATION":"true", "ENABLE_POD_ENI":"true", "POD_SECURITY_GROUP_ENFORCING_MODE":"standard"},"enableNetworkPolicy": "true"}'
     resolveConflicts: overwrite
+  - name: coredns
+    version: latest # auto discovers the latest available
+  - name: kube-proxy
+    version: latest
+  - name: aws-ebs-csi-driver
+    wellKnownPolicies:      # add IAM and service account
+      ebsCSIController: true
 managedNodeGroups:
   - name: default
     desiredCapacity: 3
