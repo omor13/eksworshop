@@ -12,7 +12,7 @@ Step [1]: Install aws cli,eksctl,kubectl,helm & aws configure
 
 Step [2]: Create the Cluster using yaml file
 
-- eksctl create cluster -f cluster.yaml
+- eksctl create cluster -f cluster-with-addons.yaml
 
 ###
 
@@ -49,3 +49,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 Step [5]: deploy all components using kubectl apply
 
 - kubectl apply -f deploy.yaml
+
+Step [6] Delete Resources
+
+- eksctl delete cluster <cluster-name>

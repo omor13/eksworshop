@@ -5,13 +5,13 @@ availabilityZones:
   - eu-central-1b
   - eu-central-1c
 metadata:
-  name: eks-fadi-1707-addons
+  name: fadi-1807
   region: eu-central-1
   version: "1.29"
   tags:
-    karpenter.sh/discovery: eks-fadi-1707-addons
+    karpenter.sh/discovery: fadi-1807
     created-by: eks-workshop-v2
-    env: eks-fadi-1707-addons
+    env: fadi-1807
 iam:
   withOIDC: true
 vpc:

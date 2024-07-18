@@ -219,10 +219,15 @@ spec:
             - name: mysql
               containerPort: 3306
               protocol: TCP
-      volumes:
-      - name: data
-        emptyDir: {}
-
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: gp2
+        resources:
+          requests:
+            storage: 5Gi
 ---
 # Source: carts/templates/serviceaccount.yaml
 apiVersion: v1
@@ -1075,11 +1080,10 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ui
+  name: app-alb
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/healthcheck-path: /actuator/health/liveness
     alb.ingress.kubernetes.io/group.name: retail-app-group
 spec:
   ingressClassName: alb
